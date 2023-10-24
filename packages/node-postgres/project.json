@@ -1,0 +1,48 @@
+{
+  "name": "@knaadh/nestjs-drizzle-pg",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/node-postgres/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/node-postgres",
+        "tsConfig": "packages/node-postgres/tsconfig.lib.json",
+        "packageJson": "packages/node-postgres/package.json",
+        "main": "packages/node-postgres/src/index.ts",
+        "assets": ["packages/node-postgres/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs @knaadh/nestjs-drizzle-pg {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/node-postgres/**/*.ts",
+          "packages/node-postgres/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/node-postgres/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

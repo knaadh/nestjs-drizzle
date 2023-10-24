@@ -1,0 +1,37 @@
+{
+  "name": "@knaadh/nestjs-drizzle-postgres",
+  "version": "1.0.0",
+  "author": "Mithlesh Jasrotia <mithleshjs@gmail.com>",
+  "license": "MIT",
+  "description": "A NestJS module for integrating Drizzle ORM with PostgresJS driver",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/knaadh/nestjs-drizzle.git",
+    "directory": "packages/postgres-js"
+  },
+  "bugs": {
+    "url": "https://github.com/knaadh/nestjs-drizzle/issues"
+  },
+  "homepage": "https://github.com/knaadh/nestjs-drizzle",
+  "keywords": [
+    "drizzle",
+    "postgres.js",
+    "database",
+    "orm",
+    "nestjs"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {
+    "@nestjs/common": ">=9.0.0",
+    "drizzle-orm": ">=0.28.6",
+    "postgres": ">=3"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts"
+}

@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@knaadh/nestjs-drizzle-better-sqlite3": [
+        "packages/better-sqlite3/src/index.ts"
+      ],
+      "@knaadh/nestjs-drizzle-mysql2": ["packages/mysql2/src/index.ts"],
+      "@knaadh/nestjs-drizzle-pg": ["packages/node-postgres/src/index.ts"],
+      "@knaadh/nestjs-drizzle-postgres": ["packages/postgres-js/src/index.ts"],
+      "@knaadh/nestjs-drizzle-turso": ["packages/turso/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "@knaadh/nestjs-drizzle-better-sqlite3",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/better-sqlite3/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/better-sqlite3",
+        "tsConfig": "packages/better-sqlite3/tsconfig.lib.json",
+        "packageJson": "packages/better-sqlite3/package.json",
+        "main": "packages/better-sqlite3/src/index.ts",
+        "assets": ["packages/better-sqlite3/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs @knaadh/nestjs-drizzle-better-sqlite3 {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/better-sqlite3/**/*.ts",
+          "packages/better-sqlite3/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/better-sqlite3/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

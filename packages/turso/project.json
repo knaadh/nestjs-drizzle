@@ -1,0 +1,48 @@
+{
+  "name": "@knaadh/nestjs-drizzle-turso",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/turso/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/turso",
+        "tsConfig": "packages/turso/tsconfig.lib.json",
+        "packageJson": "packages/turso/package.json",
+        "main": "packages/turso/src/index.ts",
+        "assets": ["packages/turso/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs @knaadh/nestjs-drizzle-turso {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/turso/**/*.ts",
+          "packages/turso/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/turso/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
