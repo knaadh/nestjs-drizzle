@@ -10,6 +10,13 @@
   <a href="https://nx.dev/" target="blank"><img src="https://img.shields.io/badge/built%20with-Nx-orange?style=for-the-badge" alt="Nrwl Nx" /></a>
 </p>
 
+<p align="center">
+<img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/knaadh/nestjs-drizzle">
+<img alt="NPM" src="https://img.shields.io/npm/l/%40knaadh%2Fnestjs-drizzle-postgres">
+<img alt="Discord" src="https://img.shields.io/discord/1167090530841280593">
+</p>
+
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
