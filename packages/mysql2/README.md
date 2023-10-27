@@ -142,7 +142,7 @@ export interface DrizzleMySqlConfig {
 ```
 
 - `mysql.connection:` single `client` connection or a `pool` as mentioned [here](https://orm.drizzle.team/docs/quick-mysql/mysql2)
-- (optional) `mysql.config:` Node-Postgres client [config](https://github.com/sidorares/node-mysql2#api-and-configuration)
+- (optional) `mysql.config:` pass [client config](https://github.com/sidorares/node-mysql2#installation) or [pool config](https://github.com/sidorares/node-mysql2#installation) according to the connection
 - (required) `config:` DrizzleORM MySQL2 configuration. You need to specify mode as documented [here](https://orm.drizzle.team/docs/rqb#modes)
 
 ## Documentation

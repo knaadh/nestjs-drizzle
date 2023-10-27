@@ -131,7 +131,7 @@ export interface DrizzlePGConfig {
 ```
 
 - `pg.connection:` single `client` connection or a `pool` as mentioned [here](https://orm.drizzle.team/docs/quick-postgresql/node-postgres)
-- (optional) `postgres.config:` Node-Postgres client [config](https://node-postgres.com/apis/client)
+- (optional) `postgres.config:` pass [client config](https://node-postgres.com/apis/client) or [pool config](https://node-postgres.com/apis/pool) according to the connection
 - (optional) `config:` DrizzleORM configuration
 
 ## Documentation
