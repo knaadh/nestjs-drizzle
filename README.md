@@ -44,6 +44,9 @@ npm install @knaadh/nestjs-drizzle-better-sqlite3 drizzle-orm better-sqlite3
 
 # Turso
 npm install @knaadh/nestjs-drizzle-turso drizzle-orm @libsql/client
+
+# PlanetScale
+npm install @knaadh/nestjs-drizzle-planetscale drizzle-orm @planetscale/database
 ```
 
 ## Usage
@@ -101,6 +104,7 @@ You can read the detailed documentation of each of the module from the links giv
 - [@knaadh/nestjs-drizzle-mysql2](https://github.com/knaadh/nestjs-drizzle/blob/main/packages/mysql2/README.md)
 - [@knaadh/nestjs-drizzle-better-sqlite3](https://github.com/knaadh/nestjs-drizzle/blob/main/packages/better-sqlite3/README.md)
 - [@knaadh/nestjs-drizzle-turso](https://github.com/knaadh/nestjs-drizzle/blob/main/packages/turso/README.md)
+- [@knaadh/nestjs-drizzle-planetscale](https://github.com/knaadh/nestjs-drizzle/blob/main/packages/planetscale/README.md)
 
 ## License
 

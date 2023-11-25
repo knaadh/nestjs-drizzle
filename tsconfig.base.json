@@ -20,6 +20,9 @@
       ],
       "@knaadh/nestjs-drizzle-mysql2": ["packages/mysql2/src/index.ts"],
       "@knaadh/nestjs-drizzle-pg": ["packages/node-postgres/src/index.ts"],
+      "@knaadh/nestjs-drizzle-planetscale": [
+        "packages/planetscale/src/index.ts"
+      ],
       "@knaadh/nestjs-drizzle-postgres": ["packages/postgres-js/src/index.ts"],
       "@knaadh/nestjs-drizzle-turso": ["packages/turso/src/index.ts"]
     }

@@ -9,6 +9,7 @@
     "@nestjs/common": "^10.0.2",
     "@nestjs/core": "^10.0.2",
     "@nestjs/platform-express": "^10.0.2",
+    "@planetscale/database": "^1.11.0",
     "axios": "^1.0.0",
     "better-sqlite3": "^9.0.0",
     "drizzle-orm": "^0.28.6",

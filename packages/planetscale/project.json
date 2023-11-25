@@ -1,0 +1,48 @@
+{
+  "name": "@knaadh/nestjs-drizzle-planetscale",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/planetscale/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/planetscale",
+        "tsConfig": "packages/planetscale/tsconfig.lib.json",
+        "packageJson": "packages/planetscale/package.json",
+        "main": "packages/planetscale/src/index.ts",
+        "assets": ["packages/planetscale/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs @knaadh/nestjs-drizzle-planetscale {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/planetscale/**/*.ts",
+          "packages/planetscale/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/planetscale/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
