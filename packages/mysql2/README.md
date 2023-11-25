@@ -53,31 +53,27 @@ import { DrizzleMySqlModule } from '@knaadh/nestjs-drizzle-mysql2';
     }),
 
     // Method #2: useFactory()
-    DrizzleMySqlModule.register({
+   DrizzleMySqlModule.registerAsync({
       tag: 'DB_PROD',
-      mysql: {
-        connection: 'client',
-        config: {
-          host: '127.0.0.1',
-          user: 'root',
-          database: 'drizzleDB',
-        },
+      useFactory() {
+        return {
+          mysql: {
+            connection: 'client',
+            config: {
+              host: '127.0.0.1',
+              user: 'root',
+              database: 'drizzleDB',
+            },
+          },
+          config: { schema: { ...schema }, mode: 'default' },
+        };
       },
-      config: { schema: { ...schema }, mode: 'default' },
     }),
 
     // Method #3: useClass()
-    DrizzleMySqlModule.register({
+    DrizzleMySqlModule.registerAsync({
       tag: 'DB_STAGING',
-      mysql: {
-        connection: 'client',
-        config: {
-          host: '127.0.0.1',
-          user: 'root',
-          database: 'drizzleDB',
-        },
-      },
-      config: { schema: { ...schema }, mode: 'default' },
+      useClass: DBConfigService,
     }),
   ],
   controllers: [AppController],

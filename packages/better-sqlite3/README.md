@@ -48,21 +48,22 @@ import { DrizzleBetterSQLiteModule } from '@knaadh/nestjs-drizzle-better-sqlite3
     }),
 
     // Method #2: useFactory()
-    DrizzleBetterSQLiteModule.register({
+   DrizzleBetterSQLiteModule.registerAsync({
       tag: 'DB_PROD',
-      sqlite3: {
-        filename: 'demo.db',
+      useFactory() {
+        return {
+          sqlite3: {
+            filename: 'demo.db',
+          },
+          config: { schema: { ...schema } },
+        };
       },
-      config: { schema: { ...schema } },
     }),
 
     // Method #3: useClass()
-    DrizzleBetterSQLiteModule.register({
+    DrizzleBetterSQLiteModule.registerAsync({
       tag: 'DB_STAGING',
-      sqlite3: {
-        filename: 'demo.db',
-      },
-      config: { schema: { ...schema } },
+      useClass: DBConfigService,
     }),
   ],
   controllers: [AppController],

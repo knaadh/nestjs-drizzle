@@ -51,27 +51,25 @@ import { DrizzleTursoModule } from '@knaadh/nestjs-drizzle-turso';
     }),
 
     // Method #2: useFactory()
-    DrizzleTursoModule.register({
+    DrizzleTursoModule.registerAsync({
       tag: 'DB_PROD',
-      turso: {
-        config: {
-          url: 'DATABASE_URL',
-          authToken: 'DATABASE_AUTH_TOKEN',
-        },
+      useFactory() {
+        return {
+          turso: {
+            config: {
+              url: 'DATABASE_URL',
+              authToken: 'DATABASE_AUTH_TOKEN',
+            },
+          },
+          config: { schema: { ...schema } },
+        };
       },
-      config: { schema: { ...schema } },
     }),
 
     // Method #3: useClass()
-    DrizzleTursoModule.register({
+   DrizzleTursoModule.registerAsync({
       tag: 'DB_STAGING',
-      turso: {
-        config: {
-          url: 'DATABASE_URL',
-          authToken: 'DATABASE_AUTH_TOKEN',
-        },
-      },
-      config: { schema: { ...schema } },
+      useClass: DBConfigService,
     }),
   ],
   controllers: [AppController],
