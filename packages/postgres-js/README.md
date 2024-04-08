@@ -33,6 +33,7 @@ Import the DrizzlePostgresModule module and pass an `options` object to initiali
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import * as schema from '../db/schema';
 import { DrizzlePostgresModule } from '@knaadh/nestjs-drizzle-postgres';
 
 @Module({
