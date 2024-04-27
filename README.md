@@ -96,7 +96,49 @@ export class AppService {
   }
 }
 ```
+
+In case you need the access to the underlying connection client for tasks such as connection termination or other operations, you must define the session property manually, as Drizzle does not currently expose it. In the following example, we demonstrate how to access the client to close all database connections when our NestJS application is terminated, using the `onApplicationShutdown` hook.
+
+Note that the specific client type vary depending on the database driver being used, so adjust the type accordingly.
+
+```typescript
+import { MySql2Client, MySql2Database } from 'drizzle-orm/mysql2';
+
+import { Inject, Injectable, OnApplicationShutdown } from '@nestjs/common';
+
+import * as schema from './schema/mysql';
+
+export type ExtendedMySql2Database<T extends Record<string, unknown>> =
+  MySql2Database<T> & {
+    session: {
+      client: MySql2Client;
+    };
+  };
+
+@Injectable()
+export class AppService implements OnApplicationShutdown {
+  constructor(
+    @Inject('DB')
+    private drizzleProd: ExtendedMySql2Database<typeof schema>,
+  ) {}
+
+  async getHello() {
+    const books = await this.drizzleProd.query.books.findMany();
+    const authors = await this.drizzleProd.query.authors.findMany();
+    return {
+      books: books,
+      authors: authors,
+    };
+  }
+  
+  async onApplicationShutdown() {
+    await this.drizzleProd.session.client.end();
+  }
+}
+```
+
 You can read the detailed documentation of each of the module from the links given below
+
 ## Documentation
 
 - [@knaadh/nestjs-drizzle-postgres](https://github.com/knaadh/nestjs-drizzle/blob/main/packages/postgres-js/README.md)
