@@ -142,4 +142,4 @@ export interface DrizzlePGConfig {
 
 ## License
 
-This package is [MIT licensed](LICENSE).
+This package is [MIT licensed](https://github.com/knaadh/nestjs-drizzle/blob/main/LICENSE).
