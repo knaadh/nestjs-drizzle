@@ -1,6 +1,6 @@
 {
   "name": "@knaadh/nestjs-drizzle-planetscale",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "Mithlesh Jasrotia <mithleshjs@gmail.com>",
   "license": "MIT",
   "description": "A NestJS module for integrating Drizzle ORM with official PlanetScale driver",
@@ -23,9 +23,6 @@
   ],
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
   },
   "peerDependencies": {
     "@nestjs/common": ">=9.0.0",
