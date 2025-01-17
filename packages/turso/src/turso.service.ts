@@ -6,6 +6,6 @@ import { DrizzleTursoConfig } from './turso.interface';
 export class DrizzleTursoService {
   public async getDrizzle(options: DrizzleTursoConfig) {
     const client = createClient(options.turso.config);
-    return drizzle(client, options?.config);
+    return drizzle(client, options?.config || {});
   }
 }
