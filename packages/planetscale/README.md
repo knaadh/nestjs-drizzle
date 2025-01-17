@@ -19,6 +19,13 @@
 - [Documentation](#documentation)
 - [License](#license)
 
+## Compatibility
+
+| Package Version | drizzle-orm Version |
+| --------------- | ------------------- |
+| 1.3.x           | ≥0.3.0              |
+| ≤1.2.x          | <0.3.0              |
+
 ## Installation
 
 ```bash
@@ -78,7 +85,6 @@ import { DrizzlePlanetScaleModule } from '@knaadh/nestjs-drizzle-planetscale';
   providers: [AppService],
 })
 export class AppModule {}
-
 ```
 
 ```typescript
@@ -87,7 +93,7 @@ export class DBConfigService {
     return {
       planetscale: {
         config: {
-         username: 'PLANETSCALE_USERNAME',
+          username: 'PLANETSCALE_USERNAME',
           password: 'PLANETSCALE_PASSWORD',
           host: 'PLANETSCALE_HOST',
         },
@@ -106,10 +112,7 @@ import * as schema from '../db/schema';
 import { PlanetScaleDatabase } from 'drizzle-orm/planetscale-serverless';
 @Injectable()
 export class AppService {
-  constructor(
-    @Inject('DB_DEV') private drizzleDev: PlanetScaleDatabase<typeof schema>,
-    @Inject('DB_PROD') private drizzleProd: PlanetScaleDatabase<typeof schema>
-  ) {}
+  constructor(@Inject('DB_DEV') private drizzleDev: PlanetScaleDatabase<typeof schema>, @Inject('DB_PROD') private drizzleProd: PlanetScaleDatabase<typeof schema>) {}
   async getData() {
     const books = await this.drizzleDev.query.books.findMany();
     const authors = await this.drizzleProd.query.authors.findMany();
